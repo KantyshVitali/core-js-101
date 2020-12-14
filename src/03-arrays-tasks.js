@@ -501,9 +501,9 @@ function getIdentityMatrix(n) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* arr */) {
+function getIntervalArray(/* start, end */) {
   throw new Error('Not implemented');
-  // return Array(end + 1 - start).fill(0).map(() => start++);
+  // return Array(end + 1 - s - 1).fill(0).map(() => s += 1);
 }
 
 /**
@@ -517,8 +517,8 @@ function getIntervalArray(/* arr */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return arr.filter((elem, pos) => arr.indexOf(elem) === pos);
 }
 
 /**
@@ -569,8 +569,8 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], x=>x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  return arr.map(childrenSelector).flat();
 }
 
 
@@ -586,7 +586,7 @@ function selectMany(/* arr, childrenSelector */) {
  *   ['one','two','three'], [2]       => 'three'  (arr[2])
  *   [[[ 1, 2, 3]]], [ 0, 0, 1 ]      => 2        (arr[0][0][1])
  */
-function getElementByIndexes(/* arr, indexes */) {
+function getElementByIndexes(/* arr */) {
   throw new Error('Not implemented');
 }
 
@@ -609,8 +609,15 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const del = arr.length % 2 === 0 ? arr.length / 2 : Math.floor(arr.length / 2);
+  const head = arr.slice(0, del);
+  const tail = (arr.length % 2) ? arr.slice(del + 1) : arr.slice(del);
+  let body = '';
+  if (arr.length % 2 % 2 !== 0) {
+    body = arr[del];
+  }
+  return body === '' ? [...tail, ...head] : [...tail, body, ...head];
 }
 
 
