@@ -241,12 +241,8 @@ function toArrayOfSquares(arr) {
  *   [ 0, 0, 0, 0, 0]         => [ 0, 0, 0, 0, 0]
  *   [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ] => [ 1, 3, 6, 10, 15, 21, 28, 36, 45, 55 ]
  */
-function getMovingSum(arr) {
-  const cumulativeSum = ((sum) => (value) => {
-    sum += value;
-    return sum;
-  })(0);
-  return arr.map(cumulativeSum);
+function getMovingSum(/* arr */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -505,8 +501,9 @@ function getIdentityMatrix(n) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(start, end) {
-  return Array(end + 1 - start).fill(0).map(() => start++);
+function getIntervalArray(/* arr */) {
+  throw new Error('Not implemented');
+  // return Array(end + 1 - start).fill(0).map(() => start++);
 }
 
 /**
